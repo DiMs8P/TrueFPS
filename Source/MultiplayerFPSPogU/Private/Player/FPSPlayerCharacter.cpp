@@ -6,6 +6,8 @@
 #include "EnhancedInputSubsystems.h"
 #include "InputActionValue.h"
 #include "Camera/CameraComponent.h"
+#include "GameFramework/PawnMovementComponent.h"
+#include "MultiplayerFPSPogU/FPSGameplayTags.h"
 
 
 AFPSPlayerCharacter::AFPSPlayerCharacter()
@@ -46,6 +48,9 @@ void AFPSPlayerCharacter::SetupPlayerInputComponent(UInputComponent* PlayerInput
 
 		// Looking
 		EnhancedInputComponent->BindAction(LookAction, ETriggerEvent::Triggered, this, &AFPSPlayerCharacter::Look);
+
+	    // Crouching
+	    EnhancedInputComponent->BindAction(CrouchAction, ETriggerEvent::Triggered, this, &AFPSPlayerCharacter::Crouch);
 	}
 }
 
@@ -83,4 +88,16 @@ void AFPSPlayerCharacter::Look(const FInputActionValue& Value)
 		AddControllerYawInput(LookAxisVector.X);
 		AddControllerPitchInput(LookAxisVector.Y);
 	}
+}
+
+void AFPSPlayerCharacter::Crouch()
+{
+    if (!bIsCrouched && !GetMovementComponent()->IsFalling())
+    {
+        Super::Crouch();
+    }
+    else
+    {
+        Super::UnCrouch();
+    }
 }

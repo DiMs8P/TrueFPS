@@ -4,6 +4,7 @@
 
 #include "CoreMinimal.h"
 #include "FPSBaseCharacter.h"
+#include "GameplayTagContainer.h"
 #include "FPSPlayerCharacter.generated.h"
 
 class UCameraComponent;
@@ -26,6 +27,12 @@ protected:
 
 	void Move(const FInputActionValue& Value);
 	void Look(const FInputActionValue& Value);
+    
+	void Crouch();
+
+public:
+    UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Tags")
+    FGameplayTagContainer ActiveGameplayTags;
 
 protected:
 	UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category = "Components")
@@ -37,11 +44,12 @@ protected:
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = Input, meta = (AllowPrivateAccess = "true"))
 	UInputAction* JumpAction;
 
+    UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = Input, meta = (AllowPrivateAccess = "true"))
+    UInputAction* CrouchAction;
+
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = Input, meta = (AllowPrivateAccess = "true"))
 	UInputAction* MoveAction;
 
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = Input, meta = (AllowPrivateAccess = "true"))
 	UInputAction* LookAction;
-
-	
 };
