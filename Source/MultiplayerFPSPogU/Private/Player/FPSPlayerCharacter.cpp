@@ -10,7 +10,7 @@
 #include "MultiplayerFPSPogU/FPSGameplayTags.h"
 
 
-AFPSPlayerCharacter::AFPSPlayerCharacter()
+AFPSPlayerCharacter::AFPSPlayerCharacter(const FObjectInitializer& ObjInit) : Super(ObjInit)
 {
 	PrimaryActorTick.bCanEverTick = false;
 

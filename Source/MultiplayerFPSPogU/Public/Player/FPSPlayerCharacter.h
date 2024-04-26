@@ -18,7 +18,7 @@ class MULTIPLAYERFPSPOGU_API AFPSPlayerCharacter : public AFPSBaseCharacter
 	GENERATED_BODY()
 
 public:
-	AFPSPlayerCharacter();
+	AFPSPlayerCharacter(const FObjectInitializer& ObjInit);
 
 	virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;
 
