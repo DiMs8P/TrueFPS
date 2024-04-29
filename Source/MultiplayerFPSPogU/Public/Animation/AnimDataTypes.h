@@ -27,8 +27,8 @@ enum class ECardinalDirection : uint8
 {
     Forward = 0,
     Backward,
-    Right,
-    Left
+    Left,
+    Right
 };
 
 UENUM(BlueprintType)
